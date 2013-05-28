@@ -39,10 +39,11 @@ $.getJSON('/tweets.json', function(data) {
   var items = [];
  
   $.each(data, function(key, val) {
-    items.push('<li>' + 
-	    	'<img class="avatar" src="' + val.avatar_url + '" /> ' +
-	    	'<span class="message">' + val.content + '</span>' +
-	    	'<span class="screenName">@' + val.screen_name + '</span>' +
+    items.push('<article class="tweet">' + 
+	    	'<h2><img class="avatar" src="' + val.avatar_url + '" /></h2>' +
+	    	'<h3 class="screenName">'+ val.name +' <span>(@' + val.screen_name + ')</span></h3>' +
+	    	'<p class="message">' + val.content + '</p>' +
+	    	'<footer>Published: <time '
     	'</li>');
   });
  
@@ -51,3 +52,11 @@ $.getJSON('/tweets.json', function(data) {
     html: items.join('')
   }).appendTo('body');
 });
+
+
+<article class="tweet">
+	<h3><img src="url" /></h3>
+	<h2>(NAME) <span>(@NAME)</h2>
+	<p>(TWEET)</p>
+	<footer>Published: <time pubdate datetime="(TIME)">(PARSED TIME)</footer>
+</article>
