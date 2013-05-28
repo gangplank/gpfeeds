@@ -19,8 +19,7 @@ $.getJSON('/events.json', function(data) {
   var items = [];
  
   $.each(data, function(key, val) {
-    items.push('<li>' + 
-	    	'<span class="status">' + val.status + '</span> ' +
+    items.push('<li class="'+val.status+'">' + 
 	    	'<span class="summary">' + val.summary + '</span> ' +
 	    	'<span class="organizer">' + val.organizer.displayName + '</span> ' + 
 	    	'<span class="startDateTime">' + val.start.dateTime + '</span> ' + 
@@ -40,7 +39,11 @@ $.getJSON('/tweets.json', function(data) {
   var items = [];
  
   $.each(data, function(key, val) {
-    items.push('<li>' + val + '</li>');
+    items.push('<li>' + 
+	    	'<img class="avatar" src="' + val.avatar_url + '" /> ' +
+	    	'<span class="message">' + val.content + '</span>' +
+	    	'<span class="screenName">@' + val.screen_name + '</span>' +
+    	'</li>');
   });
  
   $('<ul/>', {
