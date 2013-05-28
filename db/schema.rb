@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528155244) do
+ActiveRecord::Schema.define(:version => 20130528190729) do
+
+  create_table "events", :force => true do |t|
+    t.string   "summary"
+    t.string   "organizer"
+    t.string   "location"
+    t.string   "status"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "tweets", :force => true do |t|
     t.string   "tweet_id"
