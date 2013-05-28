@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130528190729) do
 
   create_table "events", :force => true do |t|
+    t.string   "event_id"
     t.string   "summary"
     t.string   "organizer"
     t.string   "location"
