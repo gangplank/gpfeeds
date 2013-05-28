@@ -13,3 +13,38 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// Get events and show them:
+$.getJSON('/events.json', function(data) {
+  var items = [];
+ 
+  $.each(data, function(key, val) {
+    items.push('<li>' + 
+	    	'<span class="status">' + val.status + '</span> ' +
+	    	'<span class="summary">' + val.summary + '</span> ' +
+	    	'<span class="organizer">' + val.organizer.displayName + '</span> ' + 
+	    	'<span class="startDateTime">' + val.start.dateTime + '</span> ' + 
+	    	'<span class="endDateTime">' + val.end.dateTime + '</span> ' + 
+    	'</li>');
+  });
+ 
+  $('<ul/>', {
+    'class': 'event',
+    html: items.join('')
+  }).appendTo('body');
+});
+
+
+// Get tweets and show them:
+$.getJSON('/tweets.json', function(data) {
+  var items = [];
+ 
+  $.each(data, function(key, val) {
+    items.push('<li>' + val + '</li>');
+  });
+ 
+  $('<ul/>', {
+    'class': 'tweet',
+    html: items.join('')
+  }).appendTo('body');
+});
