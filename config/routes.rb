@@ -1,7 +1,7 @@
 Gpfeeds::Application.routes.draw do
 
-  root :to => "application#show"
+  root :to => "application#index"
 
-  get "tweets_controller/show"
+  resources :tweets
 
 end
