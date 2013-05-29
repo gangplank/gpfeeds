@@ -14,10 +14,13 @@
 //= require jquery_ujs
 //= require_tree .
 
-// Get events and show them:
+function populate() {
+	// Clear existing content:
+	$('#tweets > div').remove();
+	$('#events > dl').remove();
+	// Get events and show them:
 $.getJSON('/events.json', function(data) {
   var items = [];
- 
   $.each(data, function(key, val) {
     items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
 	    '<dd class="organizer">' + val.organizer.displayName + '</dd> ' + 
@@ -55,3 +58,12 @@ $.getJSON('/tweets.json', function(data) {
   }).appendTo('#tweets');
 
 }); //end .getJSON
+
+// Run this again after 60 seconds:
+window.setTimeout(function() {
+	populate();
+}, 60000);
+}
+
+// Run first time:
+populate();
