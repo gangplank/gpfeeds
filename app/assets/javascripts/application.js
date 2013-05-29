@@ -37,7 +37,7 @@ $.getJSON('/events.json', function(data) {
 // Get tweets and show them:
 $.getJSON('/tweets.json', function(data) {
   var items = [];
- 
+
     items.push(
 		'<article id="' + val.tweet_id + '">' + 
 			'<header>' + 
@@ -54,4 +54,3 @@ $.getJSON('/tweets.json', function(data) {
   }).appendTo('#tweets');
 
 }); //end .getJSON
-
