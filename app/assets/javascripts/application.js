@@ -19,8 +19,7 @@ $.getJSON('/events.json', function(data) {
   var items = [];
  
   $.each(data, function(key, val) {
-    items.push('<li>' + 
-	    	'<span class="status">' + val.status + '</span> ' +
+    items.push('<li class="'+val.status+'">' + 
 	    	'<span class="summary">' + val.summary + '</span> ' +
 	    	'<span class="organizer">' + val.organizer.displayName + '</span> ' + 
 	    	'<span class="startDateTime">' + val.start.dateTime + '</span> ' + 
@@ -31,7 +30,7 @@ $.getJSON('/events.json', function(data) {
   $('<ul/>', {
     'class': 'event',
     html: items.join('')
-  }).appendTo('body');
+  }).appendTo('#events');
 });
 
 
@@ -39,12 +38,20 @@ $.getJSON('/events.json', function(data) {
 $.getJSON('/tweets.json', function(data) {
   var items = [];
  
-  $.each(data, function(key, val) {
-    items.push('<li>' + val + '</li>');
-  });
+    items.push(
+		'<article id="' + val.tweet_id + '">' + 
+			'<header>' + 
+				'<aside><img src="' + val.avatar_url + '" /></aside>' +
+				'<h1>' + val.name + ' <em>@' + val.screen_name + '</em>:</h1>' +
+			'</header>' +
+			'<p>' + val.content + 
+			 ' <time pubdate datetime="' + val.tweet_time + '">' + val.tweet_time + '</time></p>' + 
+		'</article>');
  
-  $('<ul/>', {
+  $('<div/>', {
     'class': 'tweet',
     html: items.join('')
-  }).appendTo('body');
-});
+  }).appendTo('#tweets');
+
+}); //end .getJSON
+

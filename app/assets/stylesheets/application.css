@@ -11,3 +11,119 @@
  *= require_self
  *= require_tree .
  */
+
+/*
+  Global Reset ~ Eric Myer
+	http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+----------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+*/
+
+
+body {
+	font-family : 'Verdana', sans-serif;
+	font-size : 13px;
+	color : #3D352A;
+}
+header, footer, section {
+	font-size : 1.25rem;
+	line-height : 2rem;
+}
+header {
+	padding-bottom : 2rem;
+}
+
+header h1, section h1 {
+	text-align : center;
+}
+header h1 {
+	font-size : 2.5rem;
+}
+section h1 {
+	font-size : 2rem;
+	margin-bottom : 2rem;
+}
+
+/* EVENTS */
+
+	#events 
+
+
+/* TWEETS */
+
+	#tweets article {
+		margin: 2rem 0;
+	}
+	#tweets aside {
+		float : left;
+	}
+	#tweets aside img {
+		margin : .5rem;
+		border-top-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+	}
+	#tweets article h1 {
+		text-align : left;
+		font-size : 1.25rem;
+		margin-bottom : 0;
+	}
+	#tweets h1 em {
+		font-color : #000;
+		font-weight : bold;
+	}
+	#tweets article p {
+		clear : both;
+		font-style : italic;
+	}
+	#tweets article p time {
+		color : #C3E4ED;
+	}
