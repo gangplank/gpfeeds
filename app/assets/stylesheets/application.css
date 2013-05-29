@@ -95,7 +95,9 @@ section h1 {
 
 /* EVENTS */
 
-	#events 
+	#events dl dt {
+		margin-top: 2rem;
+	}
 
 
 /* TWEETS */

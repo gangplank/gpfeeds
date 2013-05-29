@@ -19,15 +19,13 @@ $.getJSON('/events.json', function(data) {
   var items = [];
  
   $.each(data, function(key, val) {
-    items.push('<li class="'+val.status+'">' + 
-	    	'<span class="summary">' + val.summary + '</span> ' +
-	    	'<span class="organizer">' + val.organizer.displayName + '</span> ' + 
-	    	'<span class="startDateTime">' + val.start.dateTime + '</span> ' + 
-	    	'<span class="endDateTime">' + val.end.dateTime + '</span> ' + 
-    	'</li>');
+    items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
+	    '<dd class="organizer">' + val.organizer.displayName + '</dd> ' + 
+	    '<dd> <time datetime="' + val.start.dateTime + '">' + val.start.dateTime + '</time> to' +  
+			  ' <time datetime="' + val.end.dateTime + '">' + val.end.dateTime + '</time></dd>');
   });
  
-  $('<ul/>', {
+  $('<dl/>', {
     'class': 'event',
     html: items.join('')
   }).appendTo('#events');
@@ -38,16 +36,18 @@ $.getJSON('/events.json', function(data) {
 $.getJSON('/tweets.json', function(data) {
   var items = [];
 
-    items.push(
+  $.each(data, function(key, val) {  
+	items.push(
 		'<article id="' + val.tweet_id + '">' + 
 			'<header>' + 
 				'<aside><img src="' + val.avatar_url + '" /></aside>' +
 				'<h1>' + val.name + ' <em>@' + val.screen_name + '</em>:</h1>' +
 			'</header>' +
 			'<p>' + val.content + 
-			 ' <time pubdate datetime="' + val.tweet_time + '">' + val.tweet_time + '</time></p>' + 
+			 ' <time datetime="' + val.tweet_time + '">' + val.tweet_time + '</time></p>' + 
 		'</article>');
- 
+   	});
+
   $('<div/>', {
     'class': 'tweet',
     html: items.join('')
