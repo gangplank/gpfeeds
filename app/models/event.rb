@@ -3,7 +3,7 @@ class Event
   require 'json' 
   
   def self.pull_events #(url)
-    url = "https://www.googleapis.com/calendar/v3/calendars/gangplankhq.com_0fgcnbe2jug0b1bi43m5qv86s8%40group.calendar.google.com/events?futureevents=true&timeMin=#{today}&timeMax=#{nextweek}&key=AIzaSyDVtDCLk-mEaNPg1UdS5UkXFgbidaRTpmQ"
+    url = "https://www.googleapis.com/calendar/v3/calendars/gangplankhq.com_0fgcnbe2jug0b1bi43m5qv86s8%40group.calendar.google.com/events?futureevents=true&timeMin=#{today}&timeMax=#{future}&key=AIzaSyDVtDCLk-mEaNPg1UdS5UkXFgbidaRTpmQ"
     JSON.parse(open(url).read)["items"].map do |e|
       e.keep_if { |key, value | ["id", "summary", "status", "organizer", "location", "start", "end" ].include?(key) }
     end
@@ -15,8 +15,8 @@ class Event
     format_time(DateTime.now)
   end
   
-  def self.nextweek
-    format_time(1.week.from_now) 
+  def self.future
+    format_time(3.days.from_now) 
   end
 
   #refactor this, specifically UTC offset

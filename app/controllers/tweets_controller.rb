@@ -4,7 +4,7 @@ class TweetsController < ApplicationController
 
   def index
     Tweet.pull_tweets
-    @tweet = Tweet.find(:all, :order=>"tweet_id DESC", :limit => 10)
+    @tweet = Tweet.find(:all, :order=>"tweet_id DESC", :limit => 5)
     render :json => @tweet.to_json   
   end
   
