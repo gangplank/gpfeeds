@@ -15,7 +15,7 @@ class Event
         corrected_start = DateTime.new(date.year, date.month, date.day, start.hour, start.min)
         e["start"]["dateTime"] = corrected_start
       end
-      e.keep_if { |key, value | ["id", "summary", "status", "organizer", "location", "start", "end" ].include?(key) }
+      e.keep_if { |key, value | ["id", "summary", "status", "organizer", "location", "start"].include?(key) }
     end
   end
   

@@ -25,8 +25,7 @@ $.getJSON('/events.json', function(data) {
     items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
 	    '<dd class="organizer">' + val.organizer.displayName + '</dd> ' + 
 		'<dd class="location"> Location: ' + val.location + '</dd>' +
-	    '<dd> <time datetime="' + val.start.dateTime + '">' + val.start.dateTime + '</time> to' +  
-			  ' <time datetime="' + val.end.dateTime + '">' + val.end.dateTime + '</time></dd>');
+	    '<dd> <time datetime="' + val.start.dateTime + '">' + val.start.dateTime + '</time></dd>');
   });
  
   $('<dl/>', {
