@@ -22,10 +22,11 @@ function populate() {
 $.getJSON('/events.json', function(data) {
   var items = [];
   $.each(data, function(key, val) {
+  	startDate = new Date(val.start.dateTime);
     items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
 	    '<dd class="organizer">' + val.organizer.displayName + '</dd> ' + 
 		'<dd class="location"> Location: ' + val.location + '</dd>' +
-	    '<dd> <time datetime="' + val.start.dateTime + '">' + val.start.dateTime + '</time></dd>');
+	    '<dd> <time datetime="' + Date(val.start.dateTime) + '">' + startDate + '</time></dd>');
   });
  
   $('<dl/>', {
