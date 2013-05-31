@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20130528190729) do
   end
 
   create_table "tweets", :force => true do |t|
-    t.string   "tweet_id"
+    t.integer   "tweet_id"
     t.datetime "tweet_time"
     t.string   "name"
     t.string   "screen_name"
