@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528190729) do
+ActiveRecord::Schema.define(:version => 20130531021937) do
 
   create_table "events", :force => true do |t|
     t.string   "event_id"
@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(:version => 20130528190729) do
   end
 
   create_table "tweets", :force => true do |t|
-    t.string   "tweet_id"
+    t.integer  "tweet_id",    :limit => 255
     t.datetime "tweet_time"
     t.string   "name"
     t.string   "screen_name"
     t.text     "content"
     t.text     "avatar_url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
 end
