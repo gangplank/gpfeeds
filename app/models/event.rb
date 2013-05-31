@@ -3,7 +3,7 @@ class Event
   require 'json' 
   
   def self.pull_events
-    url = "https://www.googleapis.com/calendar/v3/calendars/gangplankhq.com_0fgcnbe2jug0b1bi43m5qv86s8%40group.calendar.google.com/events?futureevents=true&timeMin=#{today}&timeMax=#{future}&key=AIzaSyDVtDCLk-mEaNPg1UdS5UkXFgbidaRTpmQ"
+    url = "https://www.googleapis.com/calendar/v3/calendars/gangplankhq.com_0fgcnbe2jug0b1bi43m5qv86s8%40group.calendar.google.com/events?futureevents=true&timeMin=#{today}&timeMax=#{future}&key=#{ENV['GOOGLE_CAL_KEY']}"
     JSON.parse(open(url).read)["items"].map do |e|
       # Get the recurring rule string from the event
       rrule = CGI::parse(e["recurrence"].find {|s| s.include?("RRULE")}) if e["recurrence"]
