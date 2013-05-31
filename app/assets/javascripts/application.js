@@ -14,6 +14,15 @@
 //= require jquery_ujs
 //= require_tree .
 
+var event_sort_asc = function (event1, event2) {
+	var date1 = event1.start.dateTime;
+	var date2 = event2.start.dateTime;
+  if (date1 > date2) return 1;
+  if (date1 < date2) return -1;
+  return 0;
+};
+
+
 function populate() {
 	// Clear existing content:
 	$('#tweets > div').remove();
@@ -21,6 +30,8 @@ function populate() {
 	// Get events and show them:
 $.getJSON('/events.json', function(data) {
   var items = [];
+  data.sort(event_sort_asc);
+
   $.each(data, function(key, val) {
   	startDate = new Date(val.start.dateTime);
     items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
