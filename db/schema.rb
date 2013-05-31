@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(:version => 20130531021937) do
   end
 
   create_table "tweets", :force => true do |t|
-    t.integer  "tweet_id",    :limit => 255
+    t.integer  "tweet_id",    :limit => 24
     t.datetime "tweet_time"
     t.string   "name"
     t.string   "screen_name"
     t.text     "content"
     t.text     "avatar_url"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
 end
