@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(:version => 20130531021937) do
     t.string   "screen_name"
     t.text     "content"
     t.text     "avatar_url"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "tweet_id"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.integer  "tweet_id",    :limit => 8
   end
 
 end

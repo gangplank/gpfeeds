@@ -40,6 +40,9 @@ GEM
     coffee-script-source (1.6.2)
     cookiejar (0.3.0)
     daemons (1.1.9)
+    dotenv (0.7.0)
+    dotenv-rails (0.7.0)
+      dotenv (= 0.7.0)
     em-http-request (1.0.3)
       addressable (>= 2.2.3)
       cookiejar
@@ -137,6 +140,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  dotenv-rails
   jquery-rails
   pg
   rails (= 3.2.13)
