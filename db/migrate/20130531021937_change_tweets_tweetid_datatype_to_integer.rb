@@ -1,9 +1,11 @@
 class ChangeTweetsTweetidDatatypeToInteger < ActiveRecord::Migration
 	def up
-	  change_column :tweets, :tweet_id, :integer
+		remove_column :tweets, :tweet_id
+		add_column :tweets, :tweet_id, :integer
 	end
 
 	def down
-		change_column :tweets, :tweet_id, :string
+		remove_column :tweets, :tweet_id
+		add_column :tweets, :tweet_id, :string
 	end
 end
