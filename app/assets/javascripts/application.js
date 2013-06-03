@@ -21,6 +21,9 @@ function populate_events() {
 
     $.each(data, function(key, val) {
     	startDate = new Date(val.start.dateTime);
+      if (!val.location) {
+        val.location = "Gangplank Chandler";
+      }
       items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
   	    '<dd class="organizer">' + val.organizer.displayName + '</dd> ' + 
   		'<dd class="location"> Location: ' + val.location + '</dd>' +
