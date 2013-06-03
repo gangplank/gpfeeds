@@ -19,11 +19,14 @@ function populate_events() {
     var items = [];
     data.sort(event_sort_asc);
 
+    var counter = 0;
     $.each(data, function(key, val) {
-    	startDate = new Date(val.start.dateTime);
-      if (!val.location) {
-        val.location = "Gangplank Chandler";
+      if (counter == 3) {
+        return;
       }
+      counter++;
+    	startDate = new Date(val.start.dateTime);
+      if (!val.location) { val.location = "Gangplank Chandler"; }
       items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
   	    '<dd class="organizer">' + val.organizer.displayName + '</dd> ' + 
   		'<dd class="location"> Location: ' + val.location + '</dd>' +
@@ -49,17 +52,22 @@ function populate_tweets() {
   $.getJSON('/tweets.json', function(data) {
     var items = [];
 
-    $.each(data, function(key, val) {  
-    items.push(
-      '<article id="' + val.tweet_id + '">' + 
-        '<header>' + 
-          '<aside><img src="' + val.avatar_url + '" /></aside>' +
-          '<h1>' + val.name + ' <em>@' + val.screen_name + '</em>:</h1>' +
-        '</header>' +
-        '<p>' + val.content + 
-        // ' <time datetime="' + val.tweet_time + '">' + val.tweet_time + '</time></p>' + 
-      '</article>');
-      });
+    var counter = 0;
+    $.each(data, function(key, val) {
+      if (counter == 3) {
+        return;
+      }
+      counter++;
+      items.push(
+        '<article id="' + val.tweet_id + '">' + 
+          '<header>' + 
+            '<aside><img src="' + val.avatar_url + '" /></aside>' +
+            '<h1>' + val.name + ' <em>@' + val.screen_name + '</em>:</h1>' +
+          '</header>' +
+          '<p>' + val.content + 
+          // ' <time datetime="' + val.tweet_time + '">' + val.tweet_time + '</time></p>' + 
+        '</article>');
+    });
 
     $('<div/>', {
       'class': 'tweet',
