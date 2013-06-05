@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require moment
 //= require_tree .
 
 var event_sort_asc = function (event1, event2) {
@@ -11,6 +12,7 @@ var event_sort_asc = function (event1, event2) {
 };
 
 
+// Show Google Calendar events:
 function populate_events() {
 	// Clear existing content:
 	$('#events > dl').remove();
@@ -25,12 +27,12 @@ function populate_events() {
         return;
       }
       counter++;
-    	startDate = new Date(val.start.dateTime);
+      var startDateTime = moment(new Date(val.start.dateTime)).add('hours', 7).format('LLLL');
       if (!val.location) { val.location = "Gangplank Chandler"; }
       items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
   	    '<dd class="organizer">' + val.organizer.displayName + '</dd> ' + 
-  		'<dd class="location"> Location: ' + val.location + '</dd>' +
-  	    '<dd> <time datetime="' + Date(val.start.dateTime) + '">' + startDate + '</time></dd>');
+  		  '<dd class="location"> Location: ' + val.location + '</dd>' +
+  	    '<dd> <time datetime="' + startDateTime + '">' + startDateTime + '</time></dd>');
     });
    
     $('<dl/>', {
@@ -45,6 +47,7 @@ function populate_events() {
   }, 600000);
 }
 
+// Show Twitter tweets:
 function populate_tweets() {
   // Clear existing content:
   $('#tweets > div').remove();
@@ -62,7 +65,7 @@ function populate_tweets() {
         '<article id="' + val.tweet_id + '">' + 
           '<header>' + 
             '<aside><img src="' + val.avatar_url + '" /></aside>' +
-            '<h1>' + val.name + ' <em>@' + val.screen_name + '</em>:</h1>' +
+            '<h1>' + val.name + '</h1><h2><em>@' + val.screen_name + '</em>:</h2>' +
           '</header>' +
           '<p>' + val.content + 
           // ' <time datetime="' + val.tweet_time + '">' + val.tweet_time + '</time></p>' + 
