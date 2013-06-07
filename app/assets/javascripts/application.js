@@ -27,7 +27,7 @@ function populate_events() {
         return;
       }
       counter++;
-      var startDateTime = moment(new Date(val.start.dateTime)).add('hours', 7).format('LLLL');
+      var startDateTime = moment.utc(new Date(val.start.dateTime)).subtract(7, 'hours').format('LLLL');
       if (!val.location) { val.location = "Gangplank Chandler"; }
       items.push('<dt id="' + val.id + '" class="' + val.status + '">' + val.summary + '</dt> ' +
   	    '<dd class="organizer">' + val.organizer.displayName + '</dd> ' + 

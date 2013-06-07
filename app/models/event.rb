@@ -8,7 +8,7 @@ class Event
       # Get the recurring rule string from the event
       rrule = CGI::parse(e["recurrence"].find {|s| s.include?("RRULE")}) if e["recurrence"]
       # Set the correct Date for the event based on the recurring settings.
-      if rrule and rrule["RRULE:FREQ"] == ["WEEKLY"]
+      if rrule
         range = (DateTime.now..DateTime.now + 3).to_a
         start = DateTime.parse(e["start"]["dateTime"])
         date = range[range.index { |dt| dt.wday == start.wday }]
