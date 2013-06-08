@@ -11,6 +11,7 @@ var event_sort_asc = function (event1, event2) {
   return 0;
 };
 
+var itemLimit = 4;
 
 // Show Google Calendar events:
 function populate_events() {
@@ -23,7 +24,7 @@ function populate_events() {
 
     var counter = 0;
     $.each(data, function(key, val) {
-      if (counter == 3) {
+      if (counter == itemLimit) {
         return;
       }
       counter++;
@@ -44,7 +45,7 @@ function populate_events() {
   // Run this again after 60 seconds:
   window.setTimeout(function() {
   	populate_events();
-  }, 600000);
+  }, 60000);
 }
 
 // Show Twitter tweets:
@@ -57,7 +58,7 @@ function populate_tweets() {
 
     var counter = 0;
     $.each(data, function(key, val) {
-      if (counter == 3) {
+      if (counter == itemLimit) {
         return;
       }
       counter++;
