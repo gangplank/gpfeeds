@@ -16,9 +16,9 @@ var itemLimit = 4;
 // Show Google Calendar events:
 function populate_events() {
 	// Clear existing content:
-	$('#events > dl').remove();
 	// Get events and show them:
   $.getJSON('/events.json', function(data) {
+    $('#events > dl').remove();
     var items = [];
     data.sort(event_sort_asc);
 
@@ -51,9 +51,9 @@ function populate_events() {
 // Show Twitter tweets:
 function populate_tweets() {
   // Clear existing content:
-  $('#tweets > div').remove();
   // Get tweets and show them:
   $.getJSON('/tweets.json', function(data) {
+    $('#tweets > div').remove();
     var items = [];
 
     var counter = 0;
