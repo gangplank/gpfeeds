@@ -11,7 +11,9 @@ var event_sort_asc = function (event1, event2) {
   return 0;
 };
 
-var itemLimit = 4;
+var eventItemLimit = 5;
+var tweetItemLimit = 4;
+var update_frequency = 60000;
 
 // Show Google Calendar events:
 function populate_events() {
@@ -24,7 +26,7 @@ function populate_events() {
 
     var counter = 0;
     $.each(data, function(key, val) {
-      if (counter == itemLimit) {
+      if (counter == eventItemLimit) {
         return;
       }
       counter++;
@@ -53,17 +55,18 @@ function populate_tweets() {
   // Clear existing content:
   // Get tweets and show them:
   $.getJSON('/tweets.json', function(data) {
-    $('#tweets > div').remove();
+    $('#tweets #tweetitemswrapper > div').remove();
     var items = [];
 
     var counter = 0;
     $.each(data, function(key, val) {
-      if (counter == itemLimit) {
+      if (counter == tweetItemLimit) {
         return;
       }
       counter++;
+      var this_tweet_id_string = "a" + val.tweet_id.toString();
       items.push(
-        '<article id="' + val.tweet_id + '">' + 
+        '<article id="' + this_tweet_id_string + '">' + 
           '<header>' + 
             '<aside><img src="' + val.avatar_url + '" /></aside>' +
             '<h1>' + val.name + '</h1><h2><em>@' + val.screen_name + '</em>:</h2>' +
@@ -76,15 +79,51 @@ function populate_tweets() {
     $('<div/>', {
       'class': 'tweet',
       html: items.join('')
-    }).appendTo('#tweets');
+    }).appendTo('#tweets #tweetitemswrapper');
 
   }); //end .getJSON
 
   // Run this again after 60 seconds:
   window.setTimeout(function() {
-    populate_tweets();
-  }, 60000);
+    append_tweets();
+  }, update_frequency);
 }
+
+// Append Twitter tweets:
+function append_tweets() {
+  // Clear existing content:
+  // Get tweets and show them:
+  $.getJSON('/tweets.json', function(data) {
+    var counter = 0;
+    $.each(data, function(key, val) {
+      if (counter == tweetItemLimit) {
+        return;
+      }
+      counter++;
+      var this_tweet_id_string = "a" + val.tweet_id.toString();
+      if ($('#tweetitemswrapper .tweet article#' + this_tweet_id_string).length == 0) {
+        $('#tweetitemswrapper .tweet').prepend(
+          '<article style="display:none;" id="' + this_tweet_id_string + '">' + 
+            '<header>' + 
+              '<aside><img src="' + val.avatar_url + '" /></aside>' +
+              '<h1>' + val.name + '</h1><h2><em>@' + val.screen_name + '</em>:</h2>' +
+            '</header>' +
+            '<p>' + val.content + 
+            // ' <time datetime="' + val.tweet_time + '">' + val.tweet_time + '</time></p>' + 
+          '</article>');
+        $('article#' + this_tweet_id_string).show('slow');
+        $('#tweetitemswrapper .tweet article:last').fadeOut('slow', function() {$(this).remove(':last-child')});
+      }
+    });
+
+  }); //end .getJSON
+
+  // Run this again after 60 seconds:
+  window.setTimeout(function() {
+    append_tweets();
+  }, update_frequency);
+}
+
 
 // Run first time:
 populate_events();
