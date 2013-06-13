@@ -1,4 +1,21 @@
-== gpfeeds ==
+=====================================================
+=					GangPlank Feeds		 			=
+= **************************************************=
+=	Version: v 01.1									=	
+=	Created: June-2013								=
+=	Updated: June 10, 								=
+=	URL: gpfeeds.herokuapp.com						=
+=	Description: 									=
+= 		GPFeeds reads twitter and google calendar  	=
+= 	and broadcasts them on a walk in screen			=
+=													=
+= --------------------------------------------------=
+= 	[Authors / Contributed]							=		
+=	Jeremy Scott									=
+=	David Monaghan 									=
+=	Jessie Dommert									=	
+=													=
+=====================================================
 
 This is a simple app to show upcoming events (and other stuff) on a display.
 
