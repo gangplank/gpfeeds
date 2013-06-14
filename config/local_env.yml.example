@@ -1,0 +1,6 @@
+#
+T_CONSUMER_KEY: your-consumer-key-without-quotes
+T_CONSUMER_SECRET: your-consumer-secret-without-quotes
+T_OAUTH_TOKEN: your-oath-token-without-quotes
+T_OAUTH_TOKEN_SECRET: your-oath-token-secret-without-quotes
+GOOGLE_CAL_KEY: your-google-cal-key-without-quotes
