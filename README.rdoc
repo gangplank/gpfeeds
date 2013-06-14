@@ -38,6 +38,10 @@ After you have the Heroku toolkit installed you can use the following commands o
 	heroku run rake db:create
 	heroku run rake db:migrate
 
+When you run `git push heroku master` you will get a lot of output showing the rerun of `bundle` remotely, and the server will automatically restart.
+
 If you have modified Gemfile recently you may need to remove the Gemfile.lock file and rerun bundle before pushing to Heroku...
 
-If you are pushing database changes to Heroku and the `rake db:migrate` command isn't working, you can reset the Postgres database with `heroku pg:reset` then do `heroku run rake db:create` and `heroku run rake db:migrate` again.
+If you are pushing database changes to Heroku and the `rake db:migrate` command isn't working, you can reset the Postgres database with `heroku pg:reset DATABASE` then do `heroku run rake db:create` and `heroku run rake db:migrate` again.
+
+For more help with debugging heroku problems you can use `heroku logs` and feel free to contact anyone with commit access.
