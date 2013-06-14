@@ -1,19 +1,30 @@
-== gpfeeds ==
+## gpfeeds ##
 
 This is a simple app to show upcoming events (and other stuff) on a display.
 
-Events are collected from Google Calendar, API access is required (we're using the complementary limits at the moment).
+Events are collected from Google Calendar, API access is required (we're using the complementary limits at the moment). https://developers.google.com/google-apps/calendar/
 
-Tweets are collected using the Twitter API, again API access is required.
+Tweets are collected using the Twitter API v1.1, again API access is required. 
+- https://dev.twitter.com/
+- https://dev.twitter.com/docs/api/1.1
+- https://dev.twitter.com/apps
 
-=== Installing ===
+### Contributing ###
+
+To contribute on this project you can create a fork on your GitHub account and issue a pull request with any changes. As soon as you have one merged pull request you will be given push access to the main repo.
+
+### Installing ###
 
 To install you should have git, ruby, rails, and rvm installed.
 
-Do this:
+You will also need to have new API keys for this app created with your Google and Twitter accounts (and these will be added to the local_env.yml file).
+
+Do the following on the command line (x = repo you can push to e.g. git@github.com:gangplank/gpfeeds.git, y = your local directory to clone in to):
   git clone x y
   rvm use ruby-1.9.3@gpfeeds --create
   cd gpfeeds
+  cp config/local_env.yml.example config/local_env.yml
+  vim config/local_env.yml #Add your own API keys to this file
   bundle
   rails s
 
