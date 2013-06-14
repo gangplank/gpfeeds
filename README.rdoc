@@ -29,3 +29,15 @@ Do the following on the command line (x = repo you can push to e.g. git@github.c
   rails s
 
 Unless you encounter any errors a WebRick server should now be running on port 3000 which you can access at http://localhost:3000
+
+### Testing on Heroku ###
+
+After you have the Heroku toolkit installed you can use the following commands on the command line to push the project to a new free app on [random].herokuapp.com:
+	heroku create
+	git push heroku master
+	heroku run rake db:create
+	heroku run rake db:migrate
+
+If you have modified Gemfile recently you may need to remove the Gemfile.lock file and rerun bundle before pushing to Heroku...
+
+If you are pushing database changes to Heroku and the `rake db:migrate` command isn't working, you can reset the Postgres database with `heroku pg:reset` then do `heroku run rake db:create` and `heroku run rake db:migrate` again.
